@@ -1,0 +1,52 @@
+query getGitubRepositories($graphqlRepo: String!, $owner: String!, $sailsRepo: String!) {
+  graphQLHub: github {
+    repo(name: $graphqlRepo, ownerUsername: $owner) {
+      ...repoFields
+    }
+  }
+  sailsRepo: github {
+    repo(name: $sailsRepo, ownerUsername: "HaiderMalik12") {
+      ...repoFields
+    }
+  }
+}
+
+query getHackerNewsItem {
+  hn {
+    topStories {
+      id
+      descendants
+      text
+      timeISO
+    }
+  }
+}
+
+fragment repoFields on GithubRepo {
+  id
+  name
+  issues {
+    id
+    state
+    body
+  }
+  commits(limit: 5) {
+    sha
+    message
+    date
+  }
+  branches(limit: 5) {
+    name
+    lastCommit {
+      sha
+      message
+      date
+    }
+  }
+}
+-- query variables
+{
+  "graphqlRepo": "graphql-node-starter",
+  "owner": "HaiderMalik12",
+  "sailsRepo":"sails-api-casts"
+}

@@ -1,0 +1,17 @@
+mutation createNewRecord($input: SetValueForKeyInput!) {
+  keyValue_setValue(input: $input) {
+    clientMutationId
+    item {
+      id
+      value
+    }
+  }
+}
+-- query variables
+{
+  "input":{
+    "id":"1231273123",
+    "value":"This is new hackernews item record",
+    "clientMutationId":"76138731623"
+  }
+}

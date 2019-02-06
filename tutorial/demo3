@@ -1,0 +1,15 @@
+query getGitubRepositories($graphqlRepo: String!, $owner: String!, $wantsToFetchName: Boolean!) {
+  graphQLHub: github {
+    repo(name: $graphqlRepo, ownerUsername: $owner) {
+      name @include(if: $wantsToFetchName)
+      id
+    }
+  }
+}
+
+-- query variables
+{
+  "graphqlRepo": "graphql-node-starter",
+  "owner": "HaiderMalik12",
+  "wantsToFetchName": false
+}
