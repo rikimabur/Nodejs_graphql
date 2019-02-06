@@ -4,7 +4,7 @@ const express = require('express'),
     mongoose = require('mongoose');
 import  schema  from './schema';
 mongoose.Promise = global.Promise;
-mongoose.connect("mongodb://htvp:khongbiet123@ds119395.mlab.com:19395/htvp_grap");
+mongoose.connect("connectstring");
 app.get('/', (req, res) => {
     return res.json({
         msg: 'Welcome to GraphQL World'
